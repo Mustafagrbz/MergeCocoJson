@@ -3,10 +3,10 @@ import sys
 
 from numpy import append
 
-document1 = "trainval.json"
+document1 = "Document1.json"
 with open(document1) as f:
     data_document1 = json.load(f)
-document2 = "stuff_val2017.json"
+document2 = "Document2.json"
 with open(document2) as f:
     data_document2 = json.load(f)
 
@@ -91,6 +91,8 @@ try:
         for i in data_document2["images"]:
                 if i["id"]:
                         print(i)
+                elif i["id"] == 0:
+                        pass        
                 else: print("ids are missing in images, in document2",i)
                         
                 if i["file_name"]:
@@ -241,8 +243,7 @@ l2 = set(control_category_names)
 
 if l1 == l2:
         category_data2 = []
-else:
-        print("not same")   
+   
 
 
 #################################
@@ -317,7 +318,6 @@ annotations_data1.extend(annotations_data2)
 
 data = {"images":image_data1,"categories":category_data1,"annotations":annotations_data1}
 
-# print("------ ",data)
 
 with open("output.json", 'w') as outfile:
      json.dump(data, outfile, separators=(',', ':'))
