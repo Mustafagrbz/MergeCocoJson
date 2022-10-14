@@ -53,6 +53,8 @@ try:
         for i in data_document1["annotations"]:
                 if i["image_id"]:
                         pass
+                elif i["image_id] == 0:
+                       pass    
                 else: print("image ids are missing in annotations, in document1")
                 if i["iscrowd"]:
                         if i["iscrowd"] == 1:
@@ -90,7 +92,7 @@ except:
 try:
         for i in data_document2["images"]:
                 if i["id"]:
-                        print(i)
+                        pass
                 elif i["id"] == 0:
                         pass        
                 else: print("ids are missing in images, in document2",i)
@@ -117,6 +119,8 @@ try:
         for i in data_document1["annotations"]:
                 if i["image_id"]:
                         pass
+                elif i["image_id] == 0:
+                       pass
                 else: print("image ids are missing in annotations, in document2")
                 if i["iscrowd"]:
                         if i["iscrowd"] == 1:
