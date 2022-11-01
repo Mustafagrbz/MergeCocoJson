@@ -1,12 +1,10 @@
 import json
 import sys
 
-from numpy import append
-
-document1 = "Document1.json"
+document1 = "/home/mustafa/Downloads/MERGE_JSON/Test1.json"
 with open(document1) as f:
     data_document1 = json.load(f)
-document2 = "Document2.json"
+document2 = "/home/mustafa/Downloads/MERGE_JSON/trainval.json"
 with open(document2) as f:
     data_document2 = json.load(f)
 
@@ -15,9 +13,9 @@ with open(document2) as f:
 
 #Document 1
 try:
-        if data_document1["images"]:
-                if data_document1["categories"]:
-                        if data_document1["annotations"]:
+        if "images" in data_document1:
+                if "categories" in data_document1:
+                        if "annotations" in data_document1:
                                 print("Document 1 titles are correct")
                         else: print("annotations is missing")
                 else: print("Categories is missing")
@@ -26,51 +24,47 @@ except:
         print("Unable to process the document please check the titles in document 1")
         sys.exit(0)
 try:        
-        for i in data_document1["images"]:
-                if i["id"]:
-                        pass
-                elif i["id"] == 0:
+        for images in data_document1["images"]:
+                if "id" in images:
                         pass
                 else: print("ids are missing in images, in document1")
-                if i["file_name"]:
+                if "file_name" in images:
                         pass
                 else: print("file names are missing in images, in document1")
 except:
         print("Unable to process the document please check the images tab in document 1")  
         sys.exit(0)         
 try:
-        for i in data_document1["categories"]:
-                if i["name"]:
+        for category in data_document1["categories"]:
+                if "name" in category:
                         pass
                 else: print("names are missing in categories, in document1")
-                if i["id"]:
+                if "id" in category:
                         pass
                 else: print("ids are missing in categories, document1")
 except:
         print("Unable to process the document please check the categories tab in document 1") 
         sys.exit(0)          
 try:
-        for i in data_document1["annotations"]:
-                if i["image_id"]:
+        for annotations in data_document1["annotations"]:
+                if "image_id" in annotations:
                         pass
-                elif i["image_id] == 0:
-                       pass    
                 else: print("image ids are missing in annotations, in document1")
-                if i["iscrowd"]:
-                        if i["iscrowd"] == 1:
-                                if i["segmentation"] and i["bbox"]:
-                                        if i["counts"] and i["size"]:
+                if "iscrowd" in annotations:
+                        if annotations["iscrowd"] == 1:
+                                if "segmentation" in annotations and "bbox" in annotations:
+                                        if "counts" in annotations and "size" in annotations:
                                                 pass
                                         else: print("size or counts or both are missing from annotations/segmentation")
                                 else: print("segmentation or bbox or both are missing in annonations")
-                        elif i["iscrowd"]==0:
-                                if i["segmentation"] and i["bbox"]:
+                        elif annotations["iscrowd"]==0:
+                                if "segmentation" in annotations and "bbox" in annotations:
                                         pass
                                 else: print("size or counts or both are missing from annotations/segmentation")
                         else: print("iscrowd has a value it should not have")
                 else:("iscrowd is missing from annotations")        
 
-                if i["category_id"]:
+                if "category_id" in annotations:
                         pass
                 else: print("category ids are missing in annotations, document1")
 except:
@@ -79,9 +73,9 @@ except:
 
 #Document 2
 try:
-        if data_document2["images"]:
-                if data_document2["categories"]:
-                        if data_document2["annotations"]:
+        if "images" in data_document2:
+                if "categories" in data_document2:
+                        if "annotations" in data_document2:
                                 print("Document 2 titles are correct")
                         else: print("annotations is missing")
                 else: print("Categories is missing")
@@ -90,25 +84,23 @@ except:
         print("Unable to process the document please check the titles in document 2")
         sys.exit(0)
 try:
-        for i in data_document2["images"]:
-                if i["id"]:
+        for images in data_document2["images"]:
+                if "id" in images:
                         pass
-                elif i["id"] == 0:
-                        pass        
-                else: print("ids are missing in images, in document2",i)
+                else: print("ids are missing in images, in document2")
                         
-                if i["file_name"]:
+                if "file_name" in images:
                         pass
                 else: print("file names are missing in images, in document2")
 except:
         print("Unable to process the document please check the images in document 2")
         sys.exit(0)   
 try:
-        for i in data_document2["categories"]:
-                if i["name"]:
+        for categories in data_document2["categories"]:
+                if "name" in categories:
                         pass
                 else: print("names are missing in categories, in document2")
-                if i["id"]:
+                if "id" in categories:
                         pass
                 else: print("ids are missing in categories, document2")
 except:
@@ -116,28 +108,26 @@ except:
         sys.exit(0)
 
 try:
-        for i in data_document1["annotations"]:
-                if i["image_id"]:
+        for annotations in data_document1["annotations"]:
+                if "image_id" in annotations:
                         pass
-                elif i["image_id] == 0:
-                       pass
                 else: print("image ids are missing in annotations, in document2")
-                if i["iscrowd"]:
-                        if i["iscrowd"] == 1:
-                                if i["segmentation"] and i["bbox"]:
-                                        if i["counts"] and i["size"]:
+                if "iscrowd" in annotations:
+                        if annotations["iscrowd"] == 1:
+                                if "segmentation" in annotations and "bbox" in annotations:
+                                        if "counts" in annotations and "size" in annotations:
                                                 pass
                                         else: print("size or counts or both are missing from annotations/segmentation")
                                 else: print("segmentation or bbox or both are missing in annonations")
-                        elif i["iscrowd"]==0:
-                                if i["segmentation"] and i["bbox"]:
+                        elif annotations["iscrowd"]==0:
+                                if "segmentation" in annotations and "bbox" in annotations:
                                         pass
                                 else: print("size or counts or both are missing from annotations/segmentation")
                         else: print("iscrowd has a value it should not have")
-                else:("iscrowd is missing from annotations")        
+                else:print("iscrowd is missing from annotations")        
 
 
-                if i["category_id"]:
+                if "category_id" in annotations:
                         pass
                 else: print("category ids are missing in annotations, document2")        
 except:
@@ -187,9 +177,12 @@ rm_annotations = []
 
 for i in rm_img_id:
         for j in range(len(annotations_data2)):
-                if annotations_data2[j]["image_id"] == i:
+                if annotations_data2[j]["image_id"] == i or annotations_data2[j]["iscrowd"] == 1 :
                         rm_annotations.append(j)
-                        
+
+for i in range(len(annotations_data1)):        
+        if annotations_data1[i]["iscrowd"] == 1:
+                rm_annotations.append(i)                      
                      
 for index, i in enumerate(rm_annotations):
         del annotations_data2[i-index]          
@@ -231,8 +224,6 @@ for i in rm_cat_name:
 
 control_names = []
 verifiy_names = cat1_info["name"]
-control_ids = []
-verify_ids = cat1_info["id"]
 
 
 for i in cat1_info["name"]:
@@ -247,7 +238,7 @@ l2 = set(control_category_names)
 
 if l1 == l2:
         category_data2 = []
-   
+  
 
 
 #################################
@@ -276,7 +267,6 @@ for cat1 in category_data1:
             cat_new_ids.append(new_data)
             change_ids.append([cat2["id"], new_id])
 
-new_category_data2 = []
 for new_id in cat_new_ids:
     category_data2[new_id[0]]["id"] = new_id[1]
 
@@ -287,8 +277,7 @@ for r in rm_cat:
 #################################
 
 # Deleting duplicate Annotations
-annotations_data1 = data_document1["annotations"]
-annotations_data2 = data_document2["annotations"]
+
 
 for chng_id in change_ids:
     for i, j in enumerate(annotations_data2):
@@ -322,6 +311,8 @@ annotations_data1.extend(annotations_data2)
 
 data = {"images":image_data1,"categories":category_data1,"annotations":annotations_data1}
 
+# print("------ ",data)
 
 with open("output.json", 'w') as outfile:
      json.dump(data, outfile, separators=(',', ':'))
+     
