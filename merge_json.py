@@ -1,10 +1,10 @@
 import json
 import sys
 
-document1 = "/home/mustafa/Downloads/MERGE_JSON/Test1.json"
+document1 = "Test1.json"
 with open(document1) as f:
     data_document1 = json.load(f)
-document2 = "/home/mustafa/Downloads/MERGE_JSON/trainval.json"
+document2 = "trainval.json"
 with open(document2) as f:
     data_document2 = json.load(f)
 
